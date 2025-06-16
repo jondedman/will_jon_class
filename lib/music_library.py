@@ -6,4 +6,7 @@ class MusicLibrary():
             raise Exception('Error: Library currently empty')
         return list(self.music_library)
     def add(self, track_name):
-        self.music_library.append(track_name)
+        if track_name == '':
+            raise Exception('Error: Song name invalid')
+        else:
+            self.music_library.append(track_name)

@@ -34,15 +34,25 @@ def test_user_can_add_one_track():
     assert result == ['Song 1']
 
 
-
 """
 If user tries to add an empty string
 returns an error
 """
-
+def test_empty_track_name_returns_error():
+    library = MusicLibrary()
+    with pytest.raises(Exception) as error:
+        library.add('')
+    error_message = str(error.value)
+    assert error_message == 'Error: Song name invalid'
 
 """
 User is able to add multiple tracks
 List_tracks will return the same multiple tracks
 """
 
+def test_user_can_add_multiple_tracks():
+    library = MusicLibrary()
+    library.add('Song 1')
+    library.add('Song 2')
+    result = library.list_tracks()
+    assert result == ['Song 1', 'Song 2']
